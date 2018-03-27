@@ -1,0 +1,65 @@
+	<div class="panel panel-default">
+  <div class="panel-heading">Employee Entry Form : You can add an employee's detail information into this EMS Apps.</div>
+  <div class="panel-body">
+  <form class="form-horizontal" (submit)="addEmployee()">
+  <div class="form-group">
+    <label for="emp_name" class="col-sm-2 control-label">Name : </label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" placeholder="enter your name" id="title" required minlength="5" maxlength="8" [(ngModel)]="model.name" name="name" #title="ngModel">
+      <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">
+        <div [hidden]="!title.errors.required">
+              contact name is required:
+        </div>
+        <div [hidden]="!title.errors.minlength">
+            name should contains atleast 5 char
+        </div>
+        <div [hidden]="!title.errors.maxlength">
+            name can not be more thann 8 char
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="position" class="col-sm-2 control-label">Email : </label>
+    <div class="col-sm-9">
+      <input type="email" class="form-control" placeholder="enter your email id" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" id="url" [(ngModel)]="model.email" name="email" #url="ngModel">
+      <div *ngIf="url.errors && (url.dirty || url.touched)" class="alert alert-danger">
+        <div [hidden]="!url.errors.pattern">
+          must have valid emaill address
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="department" class="col-sm-2 control-label">PhoneNumber : </label>
+    <div class="col-sm-9">
+      <input type="number" class="form-control" placeholder="enter contact number" id="contact" required minlength="10" [(ngModel)]="model.phone" name="phone" #contact="ngModel">
+      <div *ngIf="contact.errors && (contact.dirty || contact.touched)" class="alert alert-danger">
+          <div [hidden]="!contact.errors.required">
+            must be enter contact number
+  
+          </div>
+          <div [hidden]="!contact.errors.minlength">
+              must enter valid contact number 
+          </div>
+          
+  
+    </div>
+  </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="submit" class="btn btn-success" >Save</button>
+       <a class="btn btn-info" (click)="goBack()">Cancel</a>
+    </div>
+   
+  </div>
+</form>
+
+  </div>
+</div>
